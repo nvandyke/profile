@@ -1,0 +1,227 @@
+## Sample initialization file for GNU nano.
+##
+## Please note that you must have configured nano with --enable-nanorc
+## for this file to be read!  Also note that this file should not be in
+## DOS or Mac format, and that characters specially interpreted by the
+## shell should not be escaped here.
+##
+## To make sure a value is disabled, use "unset <option>".
+##
+## For the options that take parameters, the default value is given.
+## Other options are unset by default.
+##
+## Quotes inside string parameters don't have to be escaped with
+## backslashes.  The last double quote in the string will be treated as
+## its end.  For example, for the "brackets" option, ""')>]}" will match
+## ", ', ), >, ], and }.
+
+## Enable mouse support, if available for your system.  When enabled,
+## mouse clicks can be used to place the cursor, set the mark (with a
+## double click), and execute shortcuts.  The mouse will work in the X
+## Window System, and on the console when gpm is running.
+##
+set mouse
+
+## Do extended regular expression searches by default.
+set regexp
+
+## Allow nano to be suspended.
+# set suspend
+
+## Use this tab size instead of the default; it must be greater than 0.
+set tabsize 4
+
+## Convert typed tabs to spaces.
+set tabstospaces
+
+## The two single-column characters used to display the first characters
+## of tabs and spaces.  187 in ISO 8859-1 (0000BB in Unicode) and 183 in
+## ISO-8859-1 (0000B7 in Unicode) seem to be good values for these.
+set whitespace "»·"
+
+## Show line number at beginning of each line
+set linenumbers
+
+
+## Color setup
+##
+## Format:
+##
+## syntax "short description" ["filename regex" ...]
+##
+## The "none" syntax is reserved; specifying it on the command line is
+## the same as not having a syntax at all.  The "default" syntax is
+## special: it takes no filename regexes, and applies to files that
+## don't match any other syntax's filename regexes.
+##
+## color foreground,background "regex" ["regex"...]
+## or
+## icolor foreground,background "regex" ["regex"...]
+##
+## "color" will do case sensitive matches, while "icolor" will do case
+## insensitive matches.
+##
+## Valid colors: white, black, red, blue, green, yellow, magenta, cyan.
+## For foreground colors, you may use the prefix "bright" to get a
+## stronger highlight.
+##
+## To use multi-line regexes, use the start="regex" end="regex"
+## [start="regex" end="regex"...] format.
+##
+## If your system supports transparency, not specifying a background
+## color will use a transparent color.  If you don't want this, be sure
+## to set the background color to black or white.
+##
+## If you wish, you may put your syntaxes in separate files.  You can
+## make use of such files (which can only include "syntax", "color", and
+## "icolor" commands) as follows:
+##
+## include "/path/to/syntax_file.nanorc"
+##
+## Unless otherwise noted, the name of the syntax file (without the
+## ".nanorc" extension) should be the same as the "short description"
+## name inside that file.  These names are kept fairly short to make
+## them easier to remember and faster to type using nano's -Y option.
+##
+## All regexes should be extended regular expressions.
+
+## Key bindings
+## Please see nanorc(5) for more details on this
+
+bind ^X cut main
+bind ^C copy main
+bind ^V paste all
+bind ^Q exit all
+bind ^S savefile main
+bind ^W writeout main
+bind ^O insert main
+set multibuffer
+bind ^H help all
+bind ^H exit help
+bind ^F whereis all
+bind ^G findnext all
+bind ^B wherewas all
+bind ^D findprevious all
+bind ^R replace main
+unbind ^K main
+unbind ^U all
+unbind ^N main
+unbind ^Y all
+bind ^Z undo main
+bind ^Y redo main
+unbind M-J main
+unbind M-T main
+bind ^A mark main
+#bind ^P location main
+#bind ^T gotoline main
+#bind ^T gotodir browser
+#bind ^T cutrestoffile execute
+#bind ^L linter execute
+#bind ^E execute main
+
+
+
+## Set this if your backspace key sends delete most of the time (2.1.3+)
+# bind kdel backspace all
+
+
+## Nanorc files
+#include "/usr/share/nano/nanorc.nanorc"
+
+## C/C++
+include "/usr/share/nano/c.nanorc"
+
+## Cascading Style Sheets
+include "/usr/share/nano/css.nanorc"
+
+## Debian files
+include "/usr/share/nano/debian.nanorc"
+
+## Gentoo files
+include "/usr/share/nano/gentoo.nanorc"
+
+## HTML
+include "/usr/share/nano/html.nanorc"
+
+## PHP
+include "/usr/share/nano/php.nanorc"
+
+## TCL
+include "/usr/share/nano/tcl.nanorc"
+
+## TeX
+include "/usr/share/nano/tex.nanorc"
+
+## Quoted emails (under e.g. mutt)
+include "/usr/share/nano/mutt.nanorc"
+
+## Patch files
+include "/usr/share/nano/patch.nanorc"
+
+## Manpages
+include "/usr/share/nano/man.nanorc"
+
+## Groff
+include "/usr/share/nano/groff.nanorc"
+
+## Perl
+include "/usr/share/nano/perl.nanorc"
+
+## Python
+include "/usr/share/nano/python.nanorc"
+
+## Ruby
+include "/usr/share/nano/ruby.nanorc"
+
+## Java
+include "/usr/share/nano/java.nanorc"
+
+## AWK
+include "/usr/share/nano/awk.nanorc"
+
+## Assembler
+include "/usr/share/nano/asm.nanorc"
+
+## Bourne shell scripts
+include "/usr/share/nano/sh.nanorc"
+
+## POV-Ray
+include "/usr/share/nano/pov.nanorc"
+
+## XML-type files
+include "/usr/share/nano/xml.nanorc"
+
+
+###########################################
+## syntax highlighting in xorg.conf
+###########################################
+syntax "xorg" "xorg\.conf$"
+color brightwhite "(Section|EndSection|Sub[sS]ection|EndSub[sS]ection)"
+# keywords
+color yellow "[^A-Za-z0-9](Identifier|Screen|InputDevice|Option|RightOf|LeftOf|Driver|RgbPath|FontPath|ModulePath|Load|VendorName|ModelName|BoardName|BusID|Device|Monitor|DefaultDepth|View[pP]ort|Depth|Virtual|Modes|Mode|DefaultColorDepth|Modeline|\+vsync|\+hsync|HorizSync|VertRefresh)[^A-Za-z0-9]"
+# numbers
+color magenta "[0-9]"
+# strings
+color green ""(\\.|[^\"])*""
+# comments
+color blue "#.*"
+
+
+###########################################
+## ini highlighting
+###########################################
+syntax "ini" "\.ini(\.old|~)?$"
+# values
+color brightred "=.*$"
+# equal sign
+color green "="
+# numbers
+color brightblue "-?[0-9\.]+\s*($|;)"
+# ON/OFF
+color brightmagenta "ON|OFF|On|Off|on|off\s*($|;)"
+# sections
+color brightcyan "^\s*\[.*\]"
+# keys
+color cyan "^\s*[a-zA-Z0-9_\.]+"
+# comments
+color brightyellow ";.*$"
