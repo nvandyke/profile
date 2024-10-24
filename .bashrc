@@ -14,6 +14,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias neb='nano ~/.bashrc'
 alias sc='source ~/.bashrc'
+alias python='python3'
 
 #functions
 parse_git_branch() {
