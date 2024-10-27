@@ -23,3 +23,7 @@ parse_git_branch() {
 
 #prompt
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w \[\e[33m\]\$(parse_git_branch)\[\e[00m\]\n>> "
+
+#default editor
+export EDITOR='nano'
+export VISUAL='nano'
